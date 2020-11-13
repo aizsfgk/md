@@ -3,6 +3,8 @@
 
 #include <md/base/Types.h>
 
+namespace md {
+
 class UtcTime
 {
 public:
@@ -32,6 +34,7 @@ public:
 	int64_t microSecondsSinceEpoch() const { return microSecondsSinceEpoch_; }
 
 	static UtcTime now();
+	static UtcTime invalid();
 	static const int kMicroSecondsPerSecond = 1000 * 1000;
 
 
@@ -54,5 +57,13 @@ inline double timeDifference(UtcTime high, UtcTime low)
 	int64_t diff = high.microSecondsSinceEpoch() - low.microSecondsSinceEpoch();
 	return static_cast<double>(diff) / UtcTime::kMicroSecondsPerSecond;
 }
+
+inline UtcTime addTime(UtcTime timestamp, double seconds)
+{
+	int64_t delta = static_cast<int64_t>(seconds * UtcTime::kMicroSecondsPerSecond);
+	return UtcTime(timestamp.microSecondsSinceEpoch() + delta);
+}
+
+} // end namespace md
 
 #endif

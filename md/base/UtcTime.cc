@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+using namespace md;
+
 UtcTime::UtcTime()
 	: microSecondsSinceEpoch_(0)
 	{}
@@ -27,4 +29,9 @@ UtcTime UtcTime::now()
 	gettimeofday(&tv, NULL);
 	int64_t seconds = tv.tv_sec;
 	return UtcTime(seconds * kMicroSecondsPerSecond + tv.tv_usec);
+}
+
+UtcTime UtcTime::invalid()
+{
+	return UtcTime();
 }

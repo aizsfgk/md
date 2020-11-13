@@ -4,7 +4,10 @@
 #include <stdint.h>
 #include <string>
 
+namespace md {
 
 typedef  std::string string;
+
+} // end namespace md
 
 #endif
