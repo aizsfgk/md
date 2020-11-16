@@ -10,7 +10,7 @@ class UtcTime
 public:
 	UtcTime();
 
-	explicit UtcTime(int64_t microSecondsSinceEpoch);
+	explicit UtcTime(int64_t microSecondsSinceEpoch); // 阻止隐式转换
 
 	string toString() const;
 
